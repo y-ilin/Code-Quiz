@@ -125,7 +125,7 @@ $(document).ready(function () {
         clearInterval(timeInterval);
         
         // Create form for submitting score
-        $(mainTitleEl).html("End of test");
+        $(mainTitleEl).html("End of quiz");
         $(mainBodyEl).html("<p>Your final score is " + score + "</p>");
         var nameForm = $(`<form><input class="form-control" id="nameForm" type="text" placeholder="Enter your name into the leaderboard"></form`);
         $(mainBodyEl).append(nameForm);
