@@ -1,7 +1,4 @@
 $(document).ready(function () {
-        // ADDDD DOCUMENT.READYYYYYYYYYYYYYYYY /////////////////////////////////////////////////////
-    ///////////////////////////////////////
-    ////////////////////////////////////////////////
 
     // Grab HTML elements
     var mainTitleEl = $("#mainTitleEl");
@@ -53,7 +50,6 @@ $(document).ready(function () {
 
     // Handle loading quiz
     var loadQuiz = function() {
-        console.log(playerId);
         // Timer
         timeInterval = setInterval(function() {
                 // Decrease time and display it
@@ -73,11 +69,8 @@ $(document).ready(function () {
 
     // Load next question
     var loadQuestion = function() {
-        console.log("loadQuestion")
         // If there is a next question, load question
         if(allQuestions[qNumber]){
-            console.log("next question")
-            console.log(allQuestions[qNumber])
             // Display question from allQuestions object
             $(mainTitleEl).html(allQuestions[qNumber].question);
             // Display answers from allQuestions object
@@ -85,7 +78,6 @@ $(document).ready(function () {
             var possAnswers = allQuestions[qNumber].answers;
             possAnswers.forEach(function(answer) {
                 $(answerOptions).append(`<button type="button" class="aButton btn btn-outline-secondary">` + answer + `</button>`);
-                console.log(answerOptions);
             })
             $(mainBodyEl).html(answerOptions);
         } else {
@@ -100,20 +92,19 @@ $(document).ready(function () {
     // Handle when player clicks an answer
     var handleAnswerClick = function(e) {
         // Check answer
-        console.log("checking answer");
         var playerAnswer = allQuestions[qNumber].answers.indexOf(e.target.innerHTML);
         if(playerAnswer === allQuestions[qNumber].correct){
-            // Add points
+            // If correct, add points
             score = score + 10;
-            console.log("correct! add points");
+            $(mainBodyEl).append("<div class='correctWrong'>Correct");
         } else {
-            // Subtract time from timer
+            // If wrong, subtract time from timer
             timeLeft = timeLeft - 10;
-            console.log("wrong! taking time away from you")
+            $(mainBodyEl).append("<div class='correctWrong'>Wrong");
         }
         // Load next question
         qNumber++;  // Increase question number
-        loadQuestion();
+        setTimeout(loadQuestion, 500); // Load next question after 0.5 seconds
     }
 
     // Handle ending game
@@ -147,7 +138,6 @@ $(document).ready(function () {
         $(mainTitleEl).html("Highscores");
         
         // Sort highscores from highest to lowest
-        console.log(JSON.parse(localStorage.getItem("highscoresString")));
         var highscoresSorted = Object.values(highscoresObj).sort((a, b) => (a.score > b.score) ? -1 : 1);
 
         // Load highscores on page

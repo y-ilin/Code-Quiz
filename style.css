@@ -53,6 +53,10 @@ main {
   border: 1px solid #19e4ff8e;
 }
 
+.correctWrong {
+  margin: 50px;
+}
+
 /************************* End Game State *************************/
 #nameForm {
   font-size: 25px;
