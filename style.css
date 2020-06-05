@@ -1,0 +1,96 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: rgb(141, 5, 182);
+  margin: 50px;
+}
+
+header {
+  font-family: "Bungee Shade", cursive;
+  font-size: 30px;
+  color: rgb(252, 185, 185);
+}
+
+main {
+  font-family: "Saira Condensed", sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#mainTitleEl {
+  font-size: 50px;
+  color: rgb(180, 255, 180);
+  margin: 20px;
+}
+
+#mainBodyEl {
+  font-size: 25px;
+  color: rgb(255, 213, 136);
+  margin: 20px;
+}
+
+/************************* Start Page *************************/
+#startButton {
+  margin: 50px;
+  padding: 40px;
+  border-radius: 80px;
+  background-color: rgb(252, 185, 185);
+  border-color: rgb(255, 255, 129);
+}
+
+/************************* Question/Answers State *************************/
+.aButton {
+  margin: 5px;
+  padding: 10px 30px;
+  font-size: 40px;
+  background-color: rgba(255, 238, 205, 0.301);
+  color: #19e4ff;
+  border-radius: 50px;
+  border: 1px solid #19e4ff8e;
+}
+
+/************************* End Game State *************************/
+#nameForm {
+  font-size: 25px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(255, 204, 204, 0.849);
+  border: 2px solid rgba(255, 255, 142, 0.856);
+}
+
+/************************* Display Highscores State *************************/
+.highscoreEntry {
+  font-size: 30px;
+  color: #97f3ff;
+}
+
+#highscoreScore {
+  font-family: "Bungee Shade", cursive;
+  font-size: 40px;
+  margin: 10px;
+  color: rgb(255, 213, 136);
+}
+
+#clearHighscoresButton {
+  margin: 5px;
+  padding: 10px 30px;
+  font-size: 30px;
+  background-color: rgba(255, 238, 205, 0.301);
+  color: #19e4ff;
+  border-radius: 50px;
+  border: 1px solid #19e4ff8e;
+}
+
+#playAgainButton {
+  margin: 5px;
+  padding: 10px 30px;
+  font-size: 30px;
+  background-color: rgba(255, 238, 205, 0.301);
+  color: rgb(255, 213, 136);
+  border-radius: 50px;
+  border: 1px solid rgb(255, 213, 136);
+}

@@ -30,26 +30,26 @@ $(document).ready(function () {
 
     // Creating questions and answers
     var allQuestions = {
-        1: {question: "question 1",
-            answers: ["answer 1", "answer 2", "answer 3", "answer 4"],
-            correct: 1,
-            },
-        2: {question: "question 2",
-            answers: ["answer 1", "answer 2", "answer 3", "answer 4"],
+        1: {question: "1. Which one of these is NOT a JavaScript data type?",
+            answers: ["string", "boolean", "true/false", "undefined"],
             correct: 2,
             },
-        3: {question: "question 3",
-            answers: ["answer 1", "answer 2", "answer 3", "answer 4"],
+        2: {question: "2. I want to wait 5 seconds after page load before prompting the user to enter their input. What API do I need to use?",
+            answers: ["setInterval()", "fetch()", "clearInterval()", "setTimeout()"],
             correct: 3,
             },
-        4: {question: "question 4",
-            answers: ["answer 1", "answer 2", "answer 3", "answer 4"],
-            correct: 4,
+        3: {question: `3. What does 'console.log( ["one", "two", "three"].push("four") )' give us?`,
+            answers: ["4", "four", `["one", "two", "three", "four"]`, `["four", "one", "two", "three"]`],
+            correct: 0,
+            },
+        4: {question: "4. Which symbol can be used for comments in JavaScript?",
+            answers: ["<-->", "//", "/!--/", "!-->"],
+            correct: 1,
             },    
     }
 
     // Quiz welcome page with "Start Quiz" button
-    mainBodyEl.append(`<button id="startButton">Start Quiz</button>`);
+    mainBodyEl.append(`<div id="startButtonDiv"><button id="startButton">Start Quiz</button></div>`);
 
     // Handle loading quiz
     var loadQuiz = function() {
@@ -101,7 +101,7 @@ $(document).ready(function () {
     var handleAnswerClick = function(e) {
         // Check answer
         console.log("checking answer");
-        var playerAnswer = allQuestions[qNumber].answers.indexOf(e.target.innerHTML) + 1;
+        var playerAnswer = allQuestions[qNumber].answers.indexOf(e.target.innerHTML);
         if(playerAnswer === allQuestions[qNumber].correct){
             // Add points
             score = score + 10;
@@ -125,7 +125,7 @@ $(document).ready(function () {
         clearInterval(timeInterval);
         
         // Create form for submitting score
-        $(mainTitleEl).html("All done!");
+        $(mainTitleEl).html("End of test");
         $(mainBodyEl).html("<p>Your final score is " + score + "</p>");
         var nameForm = $(`<form><input class="form-control" id="nameForm" type="text" placeholder="Enter your name into the leaderboard"></form`);
         $(mainBodyEl).append(nameForm);
@@ -141,6 +141,7 @@ $(document).ready(function () {
     var loadHighscores = function() {
         // Remove elements not needed on highscore page
         $(mainBodyEl).empty();
+        $("#timeDisplay").empty();
         
         // Display "Highscores" title
         $(mainTitleEl).html("Highscores");
@@ -151,7 +152,8 @@ $(document).ready(function () {
 
         // Load highscores on page
         highscoresSorted.forEach( function(player) {
-            $(mainBodyEl).append("<p class='highscoreEntry'>"+player.name+player.score+"</p>");
+            $(mainBodyEl).append("<p class='highscoreEntry'>"+player.name
+            +"<span id=highscoreScore>"+player.score+"</span></p>");
         })
 
         // Add button to clear highscores
@@ -159,13 +161,13 @@ $(document).ready(function () {
             localStorage.clear();
             $(".highscoreEntry").remove();
         }
-        var clearHighscoresButton = $(`<button type="button" class="btn btn-secondary">`+`Clear Highscores`+`</button>`);
+        var clearHighscoresButton = $(`<button type="button" class="btn btn-secondary" id="clearHighscoresButton">`+`Clear Highscores`+`</button>`);
         $(mainBodyEl).append(clearHighscoresButton);
         $(clearHighscoresButton).on("click", clearHighscores);
 
         // Add button to play again
         var refreshPage = () => location.reload();
-        var playAgainButton = $("<button type='button' class='btn btn-secondary'>Play Again</button>");
+        var playAgainButton = $("<button type='button' class='btn btn-secondary' id='playAgainButton'>Play Again</button>");
         $(mainBodyEl).append(playAgainButton);
         $(playAgainButton).on("click", refreshPage);
     }
