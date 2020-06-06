@@ -57,8 +57,9 @@ $(document).ready(function () {
                 $(timerEl).html(timeLeft);
         
                 // If timer hits 0, end game
-                if (timeLeft === 0) {
+                if (timeLeft <= 0) {
                     clearInterval(timeInterval);
+                    timeLeft = 0;
                     endGame();
                 }
             }, 1000);
