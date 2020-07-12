@@ -1,5 +1,6 @@
 # Code Quiz
 
+## Description
 A Multiple-choice JavaScript quiz to test your knowledge!
 This browser app makes use of: local storage, DOM manipulation using jQuery, web API's such as setInterval(), and functions and scoping.
 
